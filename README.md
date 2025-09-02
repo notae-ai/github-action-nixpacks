@@ -14,6 +14,7 @@ It's very opinionated out the box (as software should be!) but allows you to cus
 ## Inputs
 
 - `context`: The build's context, specifying the set of files located at the provided PATH or URL. It is required to point to your application source code.
+- `config`: The path to the config file (e.g nixpacks.toml). This is useful when the config file is not at the root of the context, for example in a mono-repository.
 - `tags`: A comma-separated list of tags to apply to the built image. Defaults to unix timestamp, git SHA, and `latest`.
 - `labels`: An optional, comma-separated list of metadata labels to add to the image.
 - `platforms`: An optional, comma-separated list of target platforms for the build.
@@ -38,6 +39,16 @@ It's very opinionated out the box (as software should be!) but allows you to cus
     uses: iloveitaly/github-action-nixpacks@main
     with:
       push: true
+```
+
+Mono-repository example:
+```yaml
+  - name: Build and push Docker images
+    uses: iloveitaly/github-action-nixpacks@main
+    with:
+      push: true
+      context: .
+      config: apps/your-app/nixpacks.toml
 ```
 
 Multi-architecture builds are easy:
