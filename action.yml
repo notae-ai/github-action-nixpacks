@@ -64,6 +64,7 @@ runs:
         INPUT_LABELS: ${{ inputs.labels }}
         INPUT_PLATFORMS: ${{ inputs.platforms }}
         INPUT_CONTEXT: ${{ inputs.context }}
+        INPUT_CONFIG: ${{ inputs.config }}
         INPUT_PKGS: ${{ inputs.pkgs }}
         INPUT_APT: ${{ inputs.apt }}
         INPUT_PUSH: ${{ inputs.push }}
