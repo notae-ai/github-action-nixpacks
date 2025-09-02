@@ -49,6 +49,11 @@ for var in $(env | grep ^NIXPACKS_); do
   BUILD_CMD="$BUILD_CMD --env $var"
 done
 
+# add the config file path to the build command
+if [ -n "${INPUT_CONFIG}" ]; then
+  BUILD_CMD="$BUILD_CMD --config ${INPUT_CONFIG}"
+fi
+
 # Incorporate provided input parameters from actions.yml into the Nixpacks build command
 if [ -n "${INPUT_TAGS}" ]; then
   read -ra TAGS <<<"$(echo "$INPUT_TAGS" | tr ',\n' ' ')"
